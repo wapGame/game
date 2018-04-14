@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
@@ -23,14 +23,13 @@ SET time_zone = "+00:00";
 --
 
 --
--- Struktura tabeli dla tabeli `products`
+-- Struktura tabeli dla tabeli `users`
 --
 
-CREATE TABLE `products` (
+CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
-  `title` varchar(256) NOT NULL,
-  `description` text NOT NULL,
-  `price` float NOT NULL
+  `username` varchar(256) NOT NULL,
+  `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -38,9 +37,9 @@ CREATE TABLE `products` (
 --
 
 --
--- Indeksy dla tabeli `products`
+-- Indeksy dla tabeli `users`
 --
-ALTER TABLE `products`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -48,9 +47,9 @@ ALTER TABLE `products`
 --
 
 --
--- AUTO_INCREMENT dla tabeli `products`
+-- AUTO_INCREMENT dla tabeli `users`
 --
-ALTER TABLE `products`
+ALTER TABLE `users`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 

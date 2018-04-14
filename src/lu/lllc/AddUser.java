@@ -14,16 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddProduct
+ * Servlet implementation class AddUser
  */
-@WebServlet("/AddProduct")
-public class AddProduct extends HttpServlet {
+@WebServlet("/AddUser")
+public class AddUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddProduct() {
+	public AddUser() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,9 +38,8 @@ public class AddProduct extends HttpServlet {
 		Connection connection;
 		PreparedStatement statement;
 		
-		String  = request.getParameter("title");
-		String description = request.getParameter("description");
-		float price = Float.parseFloat(request.getParameter("price"));
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		
 		String dbURL = DBInfo.getDBURL();
 		String dbuser = DBInfo.getUser();
@@ -62,11 +61,10 @@ public class AddProduct extends HttpServlet {
 		
 		
 		try {
-			statement = connection.prepareStatement("INSERT INTO products (id, title, description, price) VALUES (0,?,?,?)");
+			statement = connection.prepareStatement("INSERT INTO users (id, username, password) VALUES (0,?,?)");
 			
-			statement.setString(1,title);
-			statement.setString(2, description);
-			statement.setFloat(3, price);		
+			statement.setString(1, username);
+			statement.setString(2, password);
 		} catch (SQLException e) {
 			System.out.println("Error. Can not create the statement: " + e);
 			return;

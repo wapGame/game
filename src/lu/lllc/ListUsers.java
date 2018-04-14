@@ -3,8 +3,10 @@ package lu.lllc;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddProduct
+ * Servlet implementation class ListUsers
  */
-@WebServlet("/AddProduct")
-public class AddProduct extends HttpServlet {
+@WebServlet("/ListUsers")
+public class ListProducts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddProduct() {
+	public ListUsers() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,17 +36,18 @@ public class AddProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+
+		ArrayList<User> userList = new ArrayList<User>();
+		// Adding the (at this moment empty) bookList to the session
+		request.setAttribute("userList", userList);
+
 		Connection connection;
-		PreparedStatement statement;
-		
-		String  = request.getParameter("title");
-		String description = request.getParameter("description");
-		float price = Float.parseFloat(request.getParameter("price"));
-		
+		Statement statement;
+		ResultSet result = null;
+
 		String dbURL = DBInfo.getDBURL();
-		String dbuser = DBInfo.getUser();
-		String dbpassword = DBInfo.getPassword();
+		String user = DBInfo.getUser();
+		String password = DBInfo.getPassword();
 
 		try {
 
@@ -52,49 +55,58 @@ public class AddProduct extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error. Driver class not found: " + e);
 		}
-		
+
 		try {
-			connection = DriverManager.getConnection(dbURL, dbuser, dbpassword);
+			connection = DriverManager.getConnection(dbURL, user, password);
 		} catch (SQLException e) {
 			System.out.println("Error. Connection problem: " + e);
 			return;
 		}
-		
-		
+
 		try {
-			statement = connection.prepareStatement("INSERT INTO products (id, title, description, price) VALUES (0,?,?,?)");
-			
-			statement.setString(1,title);
-			statement.setString(2, description);
-			statement.setFloat(3, price);		
+			statement = connection.createStatement();
 		} catch (SQLException e) {
 			System.out.println("Error. Can not create the statement: " + e);
 			return;
 		}
-		
-		
-		
+
+		String searchString = "SELECT * FROM users";
 		try {
-					
-			statement.executeUpdate();
+			result = statement.executeQuery(searchString);
 		} catch (SQLException e) {
 			System.out.println("Error. Problem with executeUpdate: " + e);
 			return;
 		}
-		
+
+		// Now we collect the data from the result in order to display them in
+		// JSP
+
+		try {
+			while (result.next()) {
+				User user = new User();
+				String username = result.getString("username");
+				user.setUsername(username);
+
+				String password = result.getString("password");
+				user.setPassword(password);
+
+				userList.add(user);
+			}
+		} catch (SQLException e) {
+			System.out.println("Error. Problem reading data: " + e);
+			return;
+		}
+
 		try {
 			connection.close();
 		} catch (SQLException e) {
 			System.out.println("Error. Problem with closing connection: " + e);
 			return;
 		}
-		
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/addingOk.jsp");
-		disp.forward(request, response);
 
-		
-		
-		
+		RequestDispatcher disp = request
+				.getRequestDispatcher("/WEB-INF/showUsers.jsp");
+		disp.forward(request, response);
 
 	}
 
