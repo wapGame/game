@@ -14,15 +14,15 @@
 
 	<hr>
 	<c:choose>
-		<c:when test="${bookList == null or bookList.isEmpty()}">
+		<c:when test="${userList == null or userList.isEmpty()}">
 		    The List is empty.
 		</c:when>
 		<c:otherwise>
 		    <table border=1>
 		    
-		    <tr><th>Title</th><th>Description</th><th>Price</th></tr>
-			<c:forEach var="book" items="${bookList}">
-	        <tr><td>${book.title}</td><td>${book.description}</td><td>${book.price}</td></tr>
+		    <tr><th>Username</th><th>Password</th></tr>
+			<c:forEach var="user" items="${userList}">
+	        <tr><td>${user.username}</td><td>${user.password}</td></tr>
 			</c:forEach>
 			</table>
 		</c:otherwise>
