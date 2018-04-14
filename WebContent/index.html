@@ -1,12 +1,174 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Database</title>
+  <meta charset="utf-8">
+
+  <title>WebAppGame</title>
+
+<style>
+* {font: 28px Courier New;}
+body {background: url(http://nivelul2.ro/wp-content/uploads/2014/04/settlers_of_catan_board.jpg) top center;}
+
+#banner {
+width:100%;
+height: 200px;
+background: url(https://scontent-waw1-1.xx.fbcdn.net/v/t35.0-12/30176615_1739863706092506_503529133_o.png?_nc_cat=0&_nc_eui2=v1%3AAeHBodln9wkbpqHIhcx7F9hCBenLYvghIP-lennHgl8_XWTmMiEvlLdvC3kGFHVfcGD2L11QRKgQtehajrG1E1O9IGzSeZnLF2l4buqccuJEBA&oh=3d8138f5f6854624b8a0f42c19db3983&oe=5AD16D3E) center;
+background-repeat: no-repeat;
+}
+
+#menu {width: 100%; height: 600px;}
+
+.spacer {min-width:5%;}
+
+#main {width: 30%;font-size: 50px;}
+
+.footer {}
+
+.btn {
+  opacity: 0.9;
+  background: #6c6f70;
+  background-image: linear-gradient(to bottom, #6c6f70, #424242);
+  border-radius: 28px;
+  text-shadow: 1px 1px 3px #666666;
+  box-shadow: 5px 5px 10px #666666;
+  color: #ffffff;
+  padding: 10px 20px 10px 20px;
+  text-decoration: bold;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  background: #cccccc;
+  background-image: linear-gradient(to bottom, #cccccc, #757575);
+  text-decoration: none;
+}
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  color: #FFFFFF;
+  position: relative;
+  z-index: 1;
+  background: #424242;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  outline: 0;
+  background: #6c6f70;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.form button {
+  text-transform: uppercase;
+  outline: 0;
+  background: #6c6f70;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #424242;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+.form .message a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.form .message a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #FFFFFF;
+}
+.container .info span {
+  color: #FFFFFF;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #FFFFFF;
+}
+</style>
+
 </head>
+
 <body>
-<h1>Database test</h1>
-<a href="newProduct.html">Add a new product to the database</a><br>
-<a href="ListProducts">List all the products from the database</a>
+
+	<div id="banner">
+	</div>
+
+	<table id="menu">
+		<tr>
+		<th>
+		<div class="login-page">
+  	<div class="form">
+ 	   <form class="register-form">
+   	   <input type="text" placeholder="name"/>
+  	    <input type="password" placeholder="password"/>
+  	    <button>create</button>
+  	    <p class="message">Already registered? <a href="#">Sign In</a></p>
+  	  </form>
+ 	   <form class="login-form">
+ 	     <input type="text" placeholder="username"/>
+ 	     <input type="password" placeholder="password"/>
+ 	     <button>login</button>
+ 	     <p class="message">Not registered? </br><a href="#">Create an account</a></p>
+ 	   </form>
+ 	 </div>
+	</div>
+		</th>
+		</tr>
+	</table>
+
+	<div class="footer" align="center"> </br> I don't even know. </div>
 </body>
+
 </html>
