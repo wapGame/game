@@ -46,8 +46,8 @@ public class ListUsers extends HttpServlet {
 		ResultSet result = null;
 
 		String dbURL = DBInfo.getDBURL();
-		String user = DBInfo.getUser();
-		String password = DBInfo.getPassword();
+		String dbuser = DBInfo.getUser();
+		String dbpassword = DBInfo.getPassword();
 
 		try {
 
@@ -57,7 +57,7 @@ public class ListUsers extends HttpServlet {
 		}
 
 		try {
-			connection = DriverManager.getConnection(dbURL, user, password);
+			connection = DriverManager.getConnection(dbURL, dbuser, dbpassword);
 		} catch (SQLException e) {
 			System.out.println("Error. Connection problem: " + e);
 			return;
