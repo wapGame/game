@@ -7,7 +7,7 @@ public class User implements Serializable {
 	private String username;
 	private String password;
 
-	public Book() {
+	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
