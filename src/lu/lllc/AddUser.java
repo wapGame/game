@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class AddUser
+ * 
  */
 @WebServlet("/AddUser")
 public class AddUser extends HttpServlet {
@@ -27,6 +28,7 @@ public class AddUser extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -106,3 +108,5 @@ public class AddUser extends HttpServlet {
 	}
 
 }
+
+//gitTest
