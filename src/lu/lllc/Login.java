@@ -1,9 +1,10 @@
-package lu.lllc;
+package session;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -28,8 +29,8 @@ public class Login extends HttpServlet {
 		Connection connection;
 		PreparedStatement statement;
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		//username = request.getParameter("username");
+		//password = request.getParameter("password");
 		
 		String dbURL = DBInfo.getDBURL();
 		String dbuser = DBInfo.getUser();
@@ -45,7 +46,7 @@ public class Login extends HttpServlet {
 				connection = DriverManager.getConnection(dbURL, dbuser, dbpassword);
 			} catch (SQLException e) {
 				System.out.println("Error. Connection problem: " + e);
-				return;
+				return false;
 			}
 			
 			try {
@@ -53,25 +54,21 @@ public class Login extends HttpServlet {
 				
 				statement.setString(1, username);
 				statement.setString(2, password);
-			} catch (SQLException e) {
-				System.out.println("Error. Can not create the statement: " + e);
-				return;
-			}
-			
-			try {
 				
 				statement.executeUpdate();
-				exist = statement.next();
+				ResultSet rs = statement.executeQuery();
+		        exist = rs.next();
+		         
 			} catch (SQLException e) {
-				System.out.println("Error. Problem with executeUpdate: " + e);
-				return;
+				System.out.println("Error. Can not create the statement: " + e);
+				return false;
 			}
 			
 			try {
 				connection.close();
 			} catch (SQLException e) {
 				System.out.println("Error. Problem with closing connection: " + e);
-				return;
+				return false;
 			}
 			return exist;
 			
