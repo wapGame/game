@@ -1,4 +1,4 @@
-package session;
+package lu.lllc;
 
 import java.io.IOException;
 import java.sql.Connection;
