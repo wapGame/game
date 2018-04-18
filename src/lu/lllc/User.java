@@ -3,6 +3,7 @@ package lu.lllc;
 import java.io.Serializable;
 
 public class User implements Serializable {
+	
 	static final long serialVersionUID = 12345L;
 	private String username;
 	private String password;
@@ -27,11 +28,4 @@ public class User implements Serializable {
 		this.password = password;
 		
 	}
-	
-	public void doTest() {
-		//doNothing
-	}
-
 }
-
-//gitTest

@@ -1,6 +1,7 @@
 package lu.lllc;
 
 public class DBInfo {
+	
 	static String host = "jws-app-mysql"; // The standard name in Tomcat+ MySQL on openshift
 
 	static String DBname = "lllc";
@@ -14,7 +15,7 @@ public class DBInfo {
 	static String driver = "com.mysql.jdbc.Driver";
 
 	public DBInfo() {
-
+		// TODO Auto-generated constructor stub
 	}
 
 	static String getDBURL() {
@@ -32,5 +33,4 @@ public class DBInfo {
 	public static String getDriver() {
 		return driver;
 	}
-
 }
