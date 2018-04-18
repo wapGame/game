@@ -47,12 +47,12 @@ public class Login extends HttpServlet {
 			}
 			
 			try {
-				statement = connection.prepareStatement("SELECT * FROM users WHERE name=? AND password=?");
+				statement = connection.prepareStatement("SELECT * FROM users WHERE username=? AND password=?");
 				
 				statement.setString(1, username);
 				statement.setString(2, password);
-				
 				statement.executeUpdate();
+				
 				ResultSet rs = statement.executeQuery();
 		        exist = rs.next();
 		         
