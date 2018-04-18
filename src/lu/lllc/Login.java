@@ -28,10 +28,7 @@ public class Login extends HttpServlet {
 		
 		Connection connection;
 		PreparedStatement statement;
-		
-		//username = request.getParameter("username");
-		//password = request.getParameter("password");
-		
+
 		String dbURL = DBInfo.getDBURL();
 		String dbuser = DBInfo.getUser();
 		String dbpassword = DBInfo.getPassword();
@@ -83,12 +80,10 @@ public class Login extends HttpServlet {
 		if(checkUser(username, password)) {
 			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/game.html");
 			disp.forward(request, response);			
-			response.sendRedirect("game.html");
 			System.out.println("checkUser == true");
 		} else {
 			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/index.html");
 			disp.forward(request, response);
-			response.sendRedirect("index.html");
 			System.out.println("checkUser == false");
 		}
 
