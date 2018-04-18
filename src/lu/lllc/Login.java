@@ -83,16 +83,19 @@ public class Login extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		//doGet(request, response);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
 		if(checkUser(username, password)) {
-			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/test.jsp");
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/game.html");
 			disp.forward(request, response);			
+			response.sendRedirect("game.html");
+			System.out.println("checkUser == true");
 		} else {
 			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/index.html");
 			disp.forward(request, response);
+			response.sendRedirect("index.html");
+			System.out.println("checkUser == false");
 		}
 		
 		
