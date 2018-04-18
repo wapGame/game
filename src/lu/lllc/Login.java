@@ -78,11 +78,11 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		if(checkUser(username, password)) {
-			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/game.html");
+			RequestDispatcher disp = request.getRequestDispatcher("game.html");
 			disp.forward(request, response);			
 			System.out.println("checkUser == true");
 		} else {
-			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/index.html");
+			RequestDispatcher disp = request.getRequestDispatcher("index.html");
 			disp.forward(request, response);
 			System.out.println("checkUser == false");
 		}
