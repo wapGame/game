@@ -77,12 +77,6 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-
-
-	}
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -97,8 +91,13 @@ public class Login extends HttpServlet {
 			response.sendRedirect("index.html");
 			System.out.println("checkUser == false");
 		}
-		
-		
+
+
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+			doGet(request, response);
 	}
 
 }
