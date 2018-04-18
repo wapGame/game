@@ -24,6 +24,17 @@ public class Login extends HttpServlet {
 	
 	private boolean checkUser(String username, String password) {
 		boolean exist = false;
+		
+		Connection connection;
+		PreparedStatement statement;
+		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		String dbURL = DBInfo.getDBURL();
+		String dbuser = DBInfo.getUser();
+		String dbpassword = DBInfo.getPassword();
+		
 			try {
 				Class.forName(DBInfo.getDriver());
 			} catch (ClassNotFoundException e) {
