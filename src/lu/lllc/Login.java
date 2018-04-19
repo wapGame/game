@@ -51,9 +51,8 @@ public class Login extends HttpServlet {
 				
 				statement.setString(1, username);
 				statement.setString(2, password);
-				//statement.executeUpdate();
 				
-				ResultSet rs = statement.executeQuery();
+				ResultSet rs = statement.executeQuery();				
 		        exist = rs.next();
 		         
 			} catch (SQLException e) {
@@ -62,11 +61,19 @@ public class Login extends HttpServlet {
 			}
 			
 			try {
+				statement.executeUpdate();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			try {
 				connection.close();
 			} catch (SQLException e) {
 				System.out.println("Error. Problem with closing connection: " + e);
 				return false;
 			}
+			
 			return exist;
 			
 	}
@@ -78,13 +85,13 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		if(checkUser(username, password)) {
+			System.out.println("checkUser == true");
 			RequestDispatcher disp = request.getRequestDispatcher("game.html");
 			disp.forward(request, response);			
-			System.out.println("checkUser == true");
 		} else {
+			System.out.println("checkUser == false");
 			RequestDispatcher disp = request.getRequestDispatcher("index.html");
 			disp.forward(request, response);
-			System.out.println("checkUser == false");
 		}
 
 
