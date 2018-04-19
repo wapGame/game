@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 				
 				statement.setString(1, username);
 				statement.setString(2, password);
-				statement.executeUpdate();
+				//statement.executeUpdate();
 				
 				ResultSet rs = statement.executeQuery();
 		        exist = rs.next();
